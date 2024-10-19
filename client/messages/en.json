@@ -1,0 +1,15 @@
+{
+    "general": {
+        "Hello": "Hello"
+    },
+    "/": {
+        "metadata": {
+            "title": "Home",
+            "description": "Description",
+            "keywords": "Keywords"
+        },
+        "messages": {
+
+        }
+    }
+}

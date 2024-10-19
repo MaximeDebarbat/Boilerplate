@@ -3,21 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 255, 255, 255; /* Make text white for visibility */
+  --background-start-rgb: 0, 0, 0; /* Set start color to black */
+  --background-end-rgb: 0, 0, 0;   /* Set end color to black */
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb)); /* Background is black */
+  font-family: "Jost", sans-serif;
+  @apply overflow-x-hidden;
 }
 
 @layer utilities {

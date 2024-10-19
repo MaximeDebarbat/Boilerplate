@@ -84,4 +84,39 @@ DEFAULT_LOCALE
 
 ## Docker, Railway.app, env variables
 
-Because I like to use env variables and Railway as well, you should know
+Because I like to use env variables and Railway as well, you need to update `Dockerfile` accordingly to the env variables you want to use.
+
+# Development guide
+
+## Pages
+
+I like to use the `pages` folder to create the routes of my app. Each file in this folder will be a route.
+
+
+## Internationalization
+
+Because my webapps are generally internationalized, I use `next-i18next` to handle translations.
+
+In the folder `client/messages/` you will find the translations files. You can add a new language by creating a new file in this folder.
+The format I use is as follows:
+
+```json
+{
+    "general": { // General translations
+        "Hello": "Hello"
+    },
+    "/": { // the path of the page
+        "metadata": {
+            "title": "Home",
+            "description": "Description",
+            "keywords": "Keywords"
+        },
+        "messages": { // Page text
+
+        }
+    }
+    // ...
+}
+```
+
+
