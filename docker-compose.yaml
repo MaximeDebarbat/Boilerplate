@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  client:
+    stdin_open: true
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    command: ["npm", "run", "dev", "--", "--hostname", "0.0.0.0"]
+    env_file:
+      - ./client/.env.local
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    ports:
+      - "3000:3000"
+
+  client-deploy:
+    build:
+      dockerfile: Dockerfile
+      context: ./client
+    ports:
+      - "3001:3000"
+    env_file:
+      - ./client/.env.local
+    command: ["npm", "run", "start", "--", "--hostname", "0.0.0.0"]
+
+  # firebase:
+  #   image: node:18-alpine
+  #   volumes:
+  #     - ./firebase:/app
+  #   ports:
+  #     - "9005:9005"
+  #   command: sleep infinity
+
+networks:
+  default:
+    name: webapp-network

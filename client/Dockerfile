@@ -1,0 +1,72 @@
+# Build Stage
+FROM node:18-alpine AS builder
+
+WORKDIR /app
+
+# Environment Variables
+ARG NEXT_PUBLIC_CANCEL_HOURS_LIMIT
+ARG NEXT_PUBLIC_FIREBASE_API_KEY
+ARG NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+ARG NEXT_PUBLIC_FIREBASE_PROJECT_ID
+ARG NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+ARG NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+ARG NEXT_PUBLIC_FIREBASE_APP_ID
+ARG NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+ARG NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+ARG FIREBASE_SERVICE_ACCOUNT_KEY
+ARG NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+ARG NEXT_PUBLIC_BASE_URL
+ARG STRIPE_SECRET_KEY
+ARG STRIPE_WEBHOOK_SECRET
+ARG MAILJET_API_KEY
+ARG MAILJET_SECRET_KEY
+
+# Install dependencies
+COPY package.json ./
+RUN npm install --frozen-lockfile
+
+# Copy the source code
+COPY . .
+
+RUN rm -rf .next
+
+RUN if [ -n "$NEXT_PUBLIC_CANCEL_HOURS_LIMIT" ]; then echo "NEXT_PUBLIC_CANCEL_HOURS_LIMIT=$NEXT_PUBLIC_CANCEL_HOURS_LIMIT" >> .env.local; fi
+RUN if [ -n "$NEXT_PUBLIC_FIREBASE_API_KEY" ]; then echo "NEXT_PUBLIC_FIREBASE_API_KEY=$NEXT_PUBLIC_FIREBASE_API_KEY" >> .env.local; fi
+RUN if [ -n "$NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN" ]; then echo "NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=$NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN" >> .env.local; fi
+RUN if [ -n "$NEXT_PUBLIC_FIREBASE_PROJECT_ID" ]; then echo "NEXT_PUBLIC_FIREBASE_PROJECT_ID=$NEXT_PUBLIC_FIREBASE_PROJECT_ID" >> .env.local; fi
+RUN if [ -n "$NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET" ]; then echo "NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=$NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET" >> .env.local; fi
+RUN if [ -n "$NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID" ]; then echo "NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=$NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID" >> .env.local; fi
+RUN if [ -n "$NEXT_PUBLIC_FIREBASE_APP_ID" ]; then echo "NEXT_PUBLIC_FIREBASE_APP_ID=$NEXT_PUBLIC_FIREBASE_APP_ID" >> .env.local; fi
+RUN if [ -n "$NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID" ]; then echo "NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=$NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID" >> .env.local; fi
+RUN if [ -n "$NEXT_PUBLIC_GOOGLE_MAPS_API_KEY" ]; then echo "NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=$NEXT_PUBLIC_GOOGLE_MAPS_API_KEY" >> .env.local; fi
+RUN if [ -n "$FIREBASE_SERVICE_ACCOUNT_KEY" ]; then echo "FIREBASE_SERVICE_ACCOUNT_KEY=$FIREBASE_SERVICE_ACCOUNT_KEY" >> .env.local; fi
+RUN if [ -n "$NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY" ]; then echo "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=$NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY" >> .env.local; fi
+RUN if [ -n "$NEXT_PUBLIC_BASE_URL" ]; then echo "NEXT_PUBLIC_BASE_URL=$NEXT_PUBLIC_BASE_URL" >> .env.local; fi
+RUN if [ -n "$STRIPE_SECRET_KEY" ]; then echo "STRIPE_SECRET_KEY=$STRIPE_SECRET_KEY" >> .env.local; fi
+RUN if [ -n "$STRIPE_WEBHOOK_SECRET" ]; then echo "STRIPE_WEBHOOK_SECRET=$STRIPE_WEBHOOK_SECRET" >> .env.local; fi
+RUN if [ -n "$MAILJET_API_KEY" ]; then echo "MAILJET_API_KEY=$MAILJET_API_KEY" >> .env.local; fi
+RUN if [ -n "$MAILJET_SECRET_KEY" ]; then echo "MAILJET_SECRET_KEY=$MAILJET_SECRET_KEY" >> .env.local; fi
+
+# Verify that .env.local is properly created (for debugging purposes)
+RUN cat .env.local
+
+# Build the Next.js app
+RUN npm run build
+
+# Production Stage
+FROM node:18-alpine AS runner
+
+WORKDIR /app
+
+# Copy necessary files from the build stage
+COPY --from=builder /app/package.json ./
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
+
+# Set environment variables for production
+ENV NODE_ENV=production
+EXPOSE 3000
+
+# Start the application
+CMD ["npm", "run", "start"]
