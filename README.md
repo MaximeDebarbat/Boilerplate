@@ -24,7 +24,7 @@ docker compose up client
 - [NextJs](https://nextjs.org/) because it's cool
 - [TailwindCSS](https://tailwindcss.com/) because who likes css
 - [mailjet](https://www.mailjet.com/) (should I really justify)
-- [shadcn/ui](https://ui.shadcn.com/) it just looks great
+- [DaisyUI](https://daisyui.com/) it just looks great
 
 # Deployment
 

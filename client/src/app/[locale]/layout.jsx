@@ -45,7 +45,7 @@ const RootLayout = async ({ children, params: {locale} }) => {
   const jsonLd = await generateJsonLd({ locale, pathname });
 
   return (
-    <html lang={locale} className="scroll-smooth">
+    <html lang={locale} className="scroll-smooth" data-theme="emerald">
       <body
         className="antialiased"
       >
