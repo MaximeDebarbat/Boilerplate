@@ -2,24 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 255, 255, 255; /* Make text white for visibility */
-  --background-start-rgb: 0, 0, 0; /* Set start color to black */
-  --background-end-rgb: 0, 0, 0;   /* Set end color to black */
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb)); /* Background is black */
-  font-family: "Jost", sans-serif;
-  @apply overflow-x-hidden;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;

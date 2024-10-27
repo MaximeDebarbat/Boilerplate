@@ -52,8 +52,7 @@ docker compose up client-deploy
 
 Of course, a `.env.local` file is required. You will mandatorily need the following variables:
 
-```
-
+```env
 # Firebase
 
 NEXT_PUBLIC_FIREBASE_API_KEY
@@ -63,6 +62,8 @@ NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
 NEXT_PUBLIC_FIREBASE_APP_ID
 NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+
+FIREBASE_SERVICE_ACCOUNT_KEY
 
 # Mailjet
 
@@ -75,12 +76,19 @@ NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 NEXT_PUBLIC_BASE_URL
 STRIPE_SECRET_KEY
 STRIPE_WEBHOOK_SECRET
-
-# Locales
-
-SUPPORTED_LOCALES
-DEFAULT_LOCALE
 ```
+
+## Firebase
+
+Some of the variables are related to Firebase. You can find them in the Firebase console. The easiest and fastest way to get them is to create a new web app in the Firebase console and copy the config object. To get the config object, you need to go to the project settings and scroll down to the config object, if you do not see it, you need to create a new web app and follow the instructions.
+
+## Mailjet
+
+Mailjet is used to send emails. You need to create an account and get the API key and secret key. As simple as that.
+
+## Stripe
+
+Stripe is used to handle payments. You need to create an account and get the publishable key and secret key. You also need to get the webhook secret key. You can find it in the Stripe dashboard.
 
 ## Docker, Railway.app, env variables
 
@@ -88,14 +96,31 @@ Because I like to use env variables and Railway as well, you need to update `Doc
 
 # Development guide
 
+## Config
+
+In `/src/config.js` you will find publicly available variables used for the whole project. You can add new variables here and use them in your components. This config file is really important for 2 main parts:
+- internationalization. It is there that you define the supported locales (languages) and the default locale.
+- metadata. You can define the default and redundant metadata.
+
 ## Pages
 
-I like to use the `pages` folder to create the routes of my app. Each file in this folder will be a route.
+I like to use the `pages` folder to create the routes of my app. Each file in this folder will be a route. The name of the file will be the path of the route. In order to be SEO friendly, you should keep using internationalization for the metadata of each page:
+```json
+    "/": {
+        "metadata": {
+            "title": "Home",
+            "description": "Description",
+            "keywords": "Keywords"
+        },
+        "messages": {
 
+        }
+    }
+```
 
 ## Internationalization
 
-Because my webapps are generally internationalized, I use `next-i18next` to handle translations.
+Because my webapps are generally internationalized, I use `next-i18next` to handle translations. Locales are defined in the `config.js` file and also "hardcoded" in the URL.
 
 In the folder `client/messages/` you will find the translations files. You can add a new language by creating a new file in this folder.
 The format I use is as follows:
@@ -103,7 +128,7 @@ The format I use is as follows:
 ```json
 {
     "general": { // General translations
-        "Hello": "Hello"
+        /*...*/
     },
     "/": { // the path of the page
         "metadata": {
@@ -119,4 +144,4 @@ The format I use is as follows:
 }
 ```
 
-
+Another important thing regarding internationalization is that it contains the whole text of the webapp which is great for centralization and consistency.

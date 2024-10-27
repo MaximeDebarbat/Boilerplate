@@ -1,5 +1,3 @@
-
-
 export const locale_list = ["en"];
 export const default_locale = "en";
 export const author = "Author";

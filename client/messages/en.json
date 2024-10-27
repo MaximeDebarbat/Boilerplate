@@ -1,6 +1,33 @@
 {
     "general": {
-        "Hello": "Hello"
+        "alert":{
+            "success": "Success",
+            "error": "Error",
+            "warning": "Warning",
+            "info": "Info"
+        },
+        "authentication": {
+            "google": {
+                "button": {
+                    "login": "Login with Google",
+                    "register": "Register with Google",
+                    "logout": "Logout"
+                },
+                "alert": {
+                    "login": "Logged in with Google",
+                    "register": "Registered with Google",
+                    "logout": "Logged out"
+                }
+            },
+            "error": {
+                "auth/cancelled-popup-request": "Popup closed by user",
+                "auth/internal-error": "Internal error",
+                "auth/email-already-exists": "Email already exists",
+                "auth/invalid-display-name": "Invalid Name",
+                "auth/invalid-email": "Invalid Email",
+                "auth/invalid-password": "Invalid Password"
+            }
+        }
     },
     "/": {
         "metadata": {

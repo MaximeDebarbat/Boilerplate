@@ -17,9 +17,7 @@ export default async function middleware(request) {
 
 export const config = {
     matcher: [
-        '/',  // Match the root route
-
-        // Match all routes except those starting with /api, /_next, /_vercel, and static files like favicon.ico
+        '/', 
         '/((?!api|_next|_vercel|favicon.ico|.*\\..*).*)',
     ],
 };
