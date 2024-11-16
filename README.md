@@ -26,6 +26,15 @@ docker compose up client
 - [mailjet](https://www.mailjet.com/) (should I really justify)
 - [DaisyUI](https://daisyui.com/) it just looks great
 
+# SEO Friendly
+
+Here are some of the features that make this boilerplate SEO friendly:
+- Internationalization
+- Metadata
+- JDSON-LD
+- Sitemap
+- Robots.txt
+
 # Deployment
 
 With docker. Simple, easy, and fast. On [railway.app](https://railway.app/).
