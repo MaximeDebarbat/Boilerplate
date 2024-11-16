@@ -3,6 +3,11 @@
 
 import { useUI } from '@/context/UIContext';
 import GoogleButton from '@/components/authentication/googleButton';
+import { AiFillDollarCircle } from "react-icons/ai";
+import TextInput from '@/components/inputs/text';
+import TextArea from '@/components/inputs/textArea';
+import Select from '@/components/inputs/select';
+
 
 const Home = () => {
 
@@ -26,6 +31,8 @@ const Home = () => {
         
         <button className="btn btn-link">Link</button>
         
+        <div className="divider">Dropdown</div>
+
         <details className="dropdown text-black">
           <summary className="btn m-1">Dropdown</summary>
           <ul className="menu dropdown-content bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
@@ -33,6 +40,8 @@ const Home = () => {
             <li><a>Item 2</a></li>
           </ul>
         </details>
+
+        <div className="divider">Modals</div>
         
         <button 
           className="btn"
@@ -57,6 +66,8 @@ const Home = () => {
         >
           Display Modal 2
         </button>
+
+        <div className="divider">Alert</div>
 
         <button
           className="btn"
@@ -90,8 +101,11 @@ const Home = () => {
           Display Error persistent Alert with right component
         </button>
 
+        <div className="divider">Authentication</div>
+
         <GoogleButton />
 
+        <div className="divider">Collapsible</div>
 
         <div className="join join-vertical w-full">
           <div className="collapse collapse-arrow join-item border-base-300 border">
@@ -116,6 +130,35 @@ const Home = () => {
             </div>
           </div>
         </div>
+      
+        <div className="divider">Inputs</div>
+
+        <TextInput placeholder="Simple input text"/>
+        <TextInput placeholder="Simple input text with right element" elementRight="Name"/>
+        <TextInput placeholder="Simple input text with left icon" elementLeft={
+          <AiFillDollarCircle />
+        }
+        />
+        <TextInput label="Super label" placeholder="Simple labelled input text"/>
+        <TextInput label="Error" placeholder="Simple error input text" error={true}/>
+        <TextInput label="Error with info" placeholder="Simple error input text with info" error={true} infoMessage="That's why"/>
+      
+        <TextArea placeholder="Simple text area"/>
+      
+        <Select label="Select label" placeholder="Simple select" defaultValue="Sample Select">
+          <option disabled value="Sample Select">Sample Select</option>
+          <option>Option 1</option>
+          <option>Option 2</option>
+          <option>Option 3</option>
+        </Select>
+
+        <div className="divider">Email</div>
+
+        <button className="btn"
+          onClick={() => {
+
+          }}
+        >Send</button>
 
       </div>
     </div>

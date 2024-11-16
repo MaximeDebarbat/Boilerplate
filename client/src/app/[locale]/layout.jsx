@@ -17,6 +17,9 @@ import {generateJsonLd} from "@/components/generic/json-ld";
 import ProviderComposer from "@/context/providerComposer";
 import { UIProvider } from "@/context/UIContext";
 import { AuthProvider } from '@/context/AuthContext';
+import Footer from '@/layouts/common/footer';
+import Navbar from '@/layouts/common/navbar';
+
 
 export const generateMetadata = async ({ params: { locale } }) => {
 
@@ -42,6 +45,7 @@ export const generateMetadata = async ({ params: { locale } }) => {
   };
 }
 
+
 const RootLayout = async ({ children, params: {locale} }) => {
 
   const pathname = cleanPath(headers().get('x-pathname'), locale_list);
@@ -60,7 +64,9 @@ const RootLayout = async ({ children, params: {locale} }) => {
           [NextIntlClientProvider, {messages}],
           [AuthProvider, {}]
         ]}>
+          <Navbar />
           {children}
+          <Footer />
         </ProviderComposer>
       </body>
     </html>

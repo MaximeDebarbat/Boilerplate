@@ -6,7 +6,63 @@
             "warning": "Warning",
             "info": "Info"
         },
+        "footer": {
+          "services": {
+            "title": "Services",
+            "items": {
+              "branding": "Branding",
+              "design": "Design",
+              "marketing": "Marketing",
+              "development": "Development"
+            }
+          },
+          "company": {
+            "title": "Company",
+            "items": {
+              "about": "About",
+              "contact": "Contact",
+              "careers": "Careers",
+              "press": "Press",
+              "blog": "Blog"
+            }
+          },
+          "legal": {
+            "title": "Legal",
+            "items": {
+              "privacy_policy": "Privacy Policy",
+              "terms_of_service": "Terms of Service"
+            }
+          }
+        },
+        "navbar":{
+          "profile": "Profile",
+          "logout": "Logout",
+          "login": "Login"
+        },
         "authentication": {
+            "login":{
+              "title": "Login",
+              "email": "Email",
+              "password": "Password",
+              "email-placeholder": "Enter your email",
+              "password-placeholder": "Enter your password",
+              "button": "Login",
+              "forgot_password": "Forgot Password?",
+              "question": "Don't have an account? {response}",
+              "response": "Register"
+            },
+            "register":{
+              "title": "Register",
+              "name": "Name",
+              "email": "Email",
+              "password": "Password",
+              "name-placeholder": "Enter your name",
+              "email-placeholder": "Enter your email",
+              "password-placeholder": "Enter your password",
+              "button": "Register",
+              "question": "Already have an account? {response}",
+              "response": "Login"
+            },
             "google": {
                 "button": {
                     "login": "Login with Google",
@@ -20,7 +76,9 @@
                 }
             },
             "error": {
-                "auth/cancelled-popup-request": "Popup closed by user",
+                "auth/weak-password": "Weak Password",
+                "auth/invalid-credential": "Invalid Credential",
+                "auth/popup-closed-by-user": "Popup closed by user",
                 "auth/internal-error": "Internal error",
                 "auth/email-already-exists": "Email already exists",
                 "auth/invalid-display-name": "Invalid Name",
@@ -38,5 +96,123 @@
         "messages": {
 
         }
+    },
+    "/legal": {
+        "privacy-policy": {
+            "metadata": {
+                "title": "Privacy Policy",
+                "description": "Description",
+                "keywords": "Keywords"
+            },
+            "messages": {
+                "title": "Privacy Policy of {organization_name}",
+                "introduction": "{organization_name} operates the {website_name} website, which provides the SERVICE.",
+                "intro_paragraph": "This page is used to inform website visitors regarding our policies with the collection, use, and disclosure of Personal Information if anyone decided to use our Service, the {website_name} website.",
+                "consent_paragraph": "If you choose to use our Service, then you agree to the collection and use of information in relation with this policy. The Personal Information that we collect is used for providing and improving the Service. We will not use or share your information with anyone except as described in this Privacy Policy.",
+                "terms_reference": "The terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, which is accessible at {website_url}, unless otherwise defined in this Privacy Policy.",
+                "sections": {
+                  "information_collection_use": {
+                    "title": "Information Collection and Use",
+                    "content": "For a better experience while using our Service, we may require you to provide us with certain personally identifiable information, including but not limited to your name, phone number, and postal address. The information that we collect will be used to contact or identify you."
+                  },
+                  "log_data": {
+                    "title": "Log Data",
+                    "content": "We want to inform you that whenever you visit our Service, we collect information that your browser sends to us that is called Log Data. This Log Data may include information such as your computer's Internet Protocol ('IP') address, browser version, pages of our Service that you visit, the time and date of your visit, the time spent on those pages, and other statistics."
+                  },
+                  "cookies": {
+                    "title": "Cookies",
+                    "content": "Cookies are files with a small amount of data that is commonly used as an anonymous unique identifier. These are sent to your browser from the website that you visit and are stored on your computer's hard drive.",
+                    "usage": "Our website uses these 'cookies' to collect information and to improve our Service. You have the option to either accept or refuse these cookies, and know when a cookie is being sent to your computer. If you choose to refuse our cookies, you may not be able to use some portions of our Service."
+                  },
+                  "service_providers": {
+                    "title": "Service Providers",
+                    "content": "We may employ third-party companies and individuals due to the following reasons:",
+                    "reasons": {
+                      "p1": "To facilitate our Service;",
+                      "p2": "To provide the Service on our behalf;",
+                      "p3": "To perform Service-related services; or",
+                      "p4": "To assist us in analyzing how our Service is used."
+                    },
+                    "disclosure": "We want to inform our Service users that these third parties have access to your Personal Information. The reason is to perform the tasks assigned to them on our behalf. However, they are obligated not to disclose or use the information for any other purpose."
+                  },
+                  "security": {
+                    "title": "Security",
+                    "content": "We value your trust in providing us your Personal Information, thus we are striving to use commercially acceptable means of protecting it. But remember that no method of transmission over the internet, or method of electronic storage is 100% secure and reliable, and we cannot guarantee its absolute security."
+                  },
+                  "links_to_other_sites": {
+                    "title": "Links to Other Sites",
+                    "content": "Our Service may contain links to other sites. If you click on a third-party link, you will be directed to that site. Note that these external sites are not operated by us. Therefore, we strongly advise you to review the Privacy Policy of these websites. We have no control over, and assume no responsibility for the content, privacy policies, or practices of any third-party sites or services."
+                  },
+                  "children_privacy": {
+                    "title": "Children's Privacy",
+                    "content": "Our Services do not address anyone under the age of 13. We do not knowingly collect personally identifiable information from children under 13. In the case we discover that a child under 13 has provided us with personal information, we immediately delete this from our servers. If you are a parent or guardian and you are aware that your child has provided us with personal information, please contact us so that we will be able to take necessary actions."
+                  },
+                  "changes_to_privacy_policy": {
+                    "title": "Changes to This Privacy Policy",
+                    "content": "We may update our Privacy Policy from time to time. Thus, we advise you to review this page periodically for any changes. We will notify you of any changes by posting the new Privacy Policy on this page. These changes are effective immediately, after they are posted on this page."
+                  },
+                  "contact_us": {
+                    "title": "Contact Us",
+                    "content": "If you have any questions or suggestions about our Privacy Policy, do not hesitate to contact us."
+                  }
+                }
+            }
+        },
+        "terms-of-service": {
+          "metadata": {
+              "title": "Terms of Services",
+              "description": "Description",
+              "keywords": "Keywords"
+          },
+          "messages": {
+            "title": "Terms of Service",
+            "introduction": "Welcome to {organization_name}. By accessing or using our website ({website_url}), you agree to be bound by these Terms of Service.",
+            "acceptance_of_terms": {
+              "title": "Acceptance of Terms",
+              "content": "By accessing and using our Service, you accept and agree to be bound by these terms. If you do not agree to any part of the terms, you may not access the Service."
+            },
+            "modifications_to_terms": {
+              "title": "Modifications to Terms",
+              "content": "We reserve the right to modify these Terms of Service at any time. If we make changes, we will post the new terms on this page, and they will be effective immediately upon posting."
+            },
+            "account_requirements": {
+              "title": "Account Requirements",
+              "content": "To use certain parts of our Service, you may need to create an account. You agree to provide accurate information and keep it up to date."
+            },
+            "user_conduct": {
+              "title": "User Conduct",
+              "content": "You agree not to misuse our Service or help anyone else to do so. Misuse includes, but is not limited to, violating laws, infringing intellectual property rights, and spreading harmful or malicious content."
+            },
+            "intellectual_property": {
+              "title": "Intellectual Property",
+              "content": "All content, trademarks, and other intellectual property found on our Service are the property of {organization_name} and its licensors. You agree not to reproduce or use our intellectual property without permission."
+            },
+            "termination": {
+              "title": "Termination",
+              "content": "We may terminate or suspend your account and access to the Service at our discretion, with or without notice, if you violate these terms."
+            },
+            "limitation_of_liability": {
+              "title": "Limitation of Liability",
+              "content": "{organization_name} and its affiliates will not be liable for any damages, including loss of data, profits, or business, that arise from the use of our Service. This limitation applies to all claims, whether based on warranty, contract, or any other legal theory."
+            },
+            "warranty_disclaimer": {
+              "title": "Warranty Disclaimer",
+              "content": "Our Service is provided 'as is' and 'as available' without any warranties of any kind, whether express or implied. We do not warrant that our Service will be uninterrupted, secure, or error-free."
+            },
+            "governing_law": {
+              "title": "Governing Law",
+              "content": "These Terms are governed by and construed in accordance with the laws of {jurisdiction}, without regard to its conflict of law principles."
+            },
+            "contact_information": {
+              "title": "Contact Information",
+              "content": "If you have any questions about these Terms, please contact us at {contact_email}."
+            }
+          }
+        }
+    },
+    "not-found": {
+        "title": "Not Found",
+        "description": "Could not find the page you were looking for",
+        "button": "Go Home"
     }
 }
