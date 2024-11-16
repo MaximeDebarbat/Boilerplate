@@ -11,5 +11,6 @@ export const urlify = (websiteUrl, locale, pathname) => {
 
 export const cleanPath = (path, locale_list) => {
     const segments = path.split('/').filter(segment => segment && !locale_list.includes(segment));
-    return '/' + segments.join('/');
+    const res = '/' + segments.join('.');
+    return res;
 }

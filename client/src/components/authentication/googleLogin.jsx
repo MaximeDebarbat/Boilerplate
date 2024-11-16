@@ -6,15 +6,16 @@ import { useAuth } from "@/context/AuthContext";
 import { useUI } from "@/context/UIContext";
 
 
-const GoogleLoginButton = () => {
+const GoogleLoginButton = ({text="Login with Google"}) => {
 
     const { signInWithGoogle } = useAuth();
-    const { showAlert } = useUI();
+    const { showAlert, hideModal } = useUI();
     const translation = useTranslations('general');
 
     const handleClick = () => {
       signInWithGoogle().then(() => {
         showAlert('success', translation('authentication.google.alert.login'));
+        hideModal();
       }).catch((error) => {
         showAlert('error', translation(`authentication.error.${error.code}`));
       });
@@ -26,7 +27,7 @@ const GoogleLoginButton = () => {
         className="btn flex items-center space-x-2"
       >
         <FcGoogle size={30} />
-        <span>Login with Google</span>
+        <span>{text}</span>
       </button>
     );
   };

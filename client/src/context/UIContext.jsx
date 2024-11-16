@@ -76,7 +76,7 @@ export const UIProvider = ({ children }) => {
   };
 
   return (
-    <UIContext.Provider value={{ showModal, hideModal, showAlert, hideAlert, showPersistentAlert }}>
+    <UIContext.Provider value={{ showModal, hideModal, showAlert, hideAlert, showPersistentAlert, setModalContent, setModalOpen }}>
       {children}
       <Modal isOpen={isModalOpen} onClose={hideModal} title={modalContent.title}>
         {modalContent.content}
